@@ -1,0 +1,84 @@
+
+<body>
+    <div class="row col-4 mt-4">
+<h1 class=""><strong> Manage Your Account</strong>  </h1>
+</div>
+<div class="container mt-5">
+<div class="row ">
+    <div class=" col-7 mt-5" >
+        <ul class="list-group list-group-flush" style="border: solid 2px green;" >
+            <li class="list-group-item bg-success">
+                <div class="row">
+                    <div class="row col-5"> <h4><strong>My Accounts</strong></h4> </div>
+                    <div class="row col-3 ml-auto" > <a routerLink="/transfer" class="btn btn-info">Transfer</a> </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <span class="col-6">
+                        <h5><strong>Account Name</strong></h5>
+                    </span> 
+                    <span class="col-6" style="text-align:right ;">
+                        <h5><strong>Balance</strong></h5>
+                    </span>
+                </div>
+            </li>
+            </ul>
+
+            <ul class="list-group list-group-flush"  *ngFor="let a of account"  style="border: solid 2px green;">
+            <li class="list-group-item" *ngIf="a.accountNumber == accountNo">
+             <div class="row">
+                <span class="col-4"><h6>{{a.accountType}}</h6></span>
+                <button class="col-2 ml-auto text-dark text-decoration-none"
+                    (click)="history = !history && (accountType =a.accountType)">
+                    <h5>History</h5>
+                </button>
+                <span class="col-4" style="text-align:right ;">{{a.accountBalance}}</span>
+            </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-9 mt-5">
+    <div *ngFor="let eachAccount of transferDetails">
+        <div class="border border-danger" *ngIf="eachAccount.sendFromAccount == accountType">
+            <ul class="list-group list-group-flush bg-danger">
+                
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Account Name</th>
+                            <th scope="col">Account Number</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                
+                <tbody>
+                    <tr>
+                        
+                        <th scope="row"> <span class="col-3 peek">{{ eachAccount.sendFromAccount }}</span> </th>
+                        <th scope="row"> <span class="col-3 peek">{{ eachAccount.sendToAccount }}</span> </th>
+                        <th scope="row"> <span class="col-3 peek">{{ eachAccount.amount }}</span> </th>
+                        <th scope="row"> <span class="col-3">{{ eachAccount.date }}</span> </th>
+                        
+                        
+                    </tr>
+                    </tbody>
+                    </table>
+            </ul>
+        </div>
+    </div>
+    </div>
+    
+    <div class="row col-5 ml-1 mt-3">
+        <button type="button" class="btn btn-success btn-lg btn-block " id="chequebook" (click)="request()">Request a Cheque Book</button>
+       
+    </div>
+
+</div>
+</div>
+
+</body>
+
+

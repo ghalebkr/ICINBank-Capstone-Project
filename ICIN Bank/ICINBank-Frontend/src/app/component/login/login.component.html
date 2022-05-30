@@ -1,0 +1,36 @@
+<body>
+<div class="container">
+    
+    <h1 class="text-center mt-5">ICIN Bank</h1>
+    
+<div class="row">
+<form class="col-6 offset-3 mt-5" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+    <div class="form-group">
+        <label for="Email">Email </label>
+        <input type="email" class="form-control" id="Email" formControlName="email">
+        <small *ngIf="hasError('email')" [class]="hasError('email') ? 'has-error' : ''">
+            <div>
+                <span *ngIf="email?.errors?.['required']">Email is a required field</span>
+                <span *ngIf="email?.errors?.['email']">Please enter a valid email address!</span>
+            </div>
+        </small>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" formControlName="password">
+        <small *ngIf="hasError('password')" [class]="hasError('password') ? 'has-error' : ''">
+            <div>
+                <span *ngIf="password?.errors?.['required']">Password is a required field</span>
+                <span *ngIf="password?.errors?.['minlength']">password is a min 8 char long field</span>
+                <span *ngIf="password?.errors?.['maxlength']">password is a max 20 char long field</span>
+            </div>
+        </small>
+    </div>
+    <h5 id="signup">If you don't have an account yet. Please <a routerLink="/register">Sign Up</a></h5>
+    <div class="row">
+    <button type="submit" class="btn btn-primary offset-5">login</button>
+    </div>
+</form>
+</div>
+</div>
+</body>

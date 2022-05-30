@@ -1,0 +1,110 @@
+<body>
+<div class="container">
+    <div class="title text-center mt-5"> <h1>ICIN Bank</h1></div>
+    <div class="row">
+        <form class="col-10 offset-1 mt-5" [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+            <div class="row">
+            <div class="col-5 offset-1 form-group">
+                <label for="firstName">First Name </label>
+                <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" formControlName="firstName">
+                <small *ngIf="hasError('firstName')" [class]="hasError('firstName') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="firstName?.errors?.['required']">First Name is a required field</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5  form-group">
+                <label for="lastName">Last Name </label>
+                <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" formControlName="lastName">
+                <small *ngIf="hasError('lastName')" [class]="hasError('lastName') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="lastName?.errors?.['required']">Last Name is a required field</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5 offset-1 form-group">
+                <label for="Email">Email </label>
+                <input type="email" class="form-control" id="Email" placeholder="Enter your email" formControlName="email">
+                <small *ngIf="hasError('email')" [class]="hasError('email') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="email?.errors?.['required']">Email is a required field</span>
+                        <span *ngIf="email?.errors?.['email']">Please enter a valid email address!</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5  form-group">
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" id="Password" placeholder="Enter your password" formControlName="password">
+                <small *ngIf="hasError('password')" [class]="hasError('password') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="password?.errors?.['required']">Password is a required field</span>
+                        <span *ngIf="password?.errors?.['minlength']">password is a min 8 char long field</span>
+                        <span *ngIf="password?.errors?.['maxlength']">password is a max 20 char long field</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5 offset-1  form-group">
+                <label for="country">Country</label>
+                <input type="text" class="form-control" placeholder="Enter your country" formControlName="country">
+                <small *ngIf="hasError('country')" [class]="hasError('country') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="country?.errors?.['required']">Country is a required field</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5  form-group">
+                <label for="gender">Gender: </label> 
+                <small *ngIf="hasError('gender')" [class]="hasError('gender') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="gender?.errors?.['required']">Gender is a required field</span>
+                    </div>
+                </small><br>
+                <input  class="offset-1" type="radio" name="gender" value="male" formControlName="gender">Male
+                <input  class="offset-1" type="radio" name="gender" value="female" formControlName="gender">Female
+            </div>
+            <div class="col-5 offset-1 form-group">
+                <label for="dateOfBirth">Date of Birth </label>
+                <input type="date" class="form-control" id="dateOfBirth" formControlName="dateofbirth">
+                <small *ngIf="hasError('dateofbirth')" [class]="hasError('dateofbirth') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="dateofbirth?.errors?.['required']">Date of Birth is a required field</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5  form-group">
+                <label for="accountNumber">Account Number</label>
+                <input type="accountNumber" class="form-control" id="accountNumber" placeholder="Enter your account number" formControlName="accountNo">
+                <small *ngIf="hasError('accountNo')" [class]="hasError('accountNo') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="accountNo?.errors?.['required']">Account Number is a required field</span>
+                    </div>
+                </small>
+            </div>
+            <div class="col-5 offset-1 form-group">
+                <label for="iban">IBAN </label>
+                <input type="text" class="form-control" id="iban" placeholder="Enter your IBAN" formControlName="iban">
+                <small *ngIf="hasError('iban')" [class]="hasError('iban') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="iban?.errors?.['required']">IBAN is a required field</span>
+                    </div>
+                </small>
+                
+                
+            </div>
+            <div class="col-5  form-group">
+                <label for="image">Image</label>
+                <input type="file" class="form-control" id="image" formControlName="image" >
+                <small *ngIf="hasError('image')" [class]="hasError('image') ? 'has-error' : ''">
+                    <div>
+                        <span *ngIf="image?.errors?.['required']">Image is a required field</span>
+                    </div>
+                </small>
+            </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-primary offset-5">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
